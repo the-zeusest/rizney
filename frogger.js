@@ -47,8 +47,8 @@
         .top-area {
           position: relative !important;
           min-height: clamp(88px, 14vw, 120px) !important;
+          margin: 0 0 14px !important;
           padding: 0 !important;
-          margin: 0 !important;
           line-height: 0 !important;
           font-size: 0 !important;
         }
@@ -89,8 +89,8 @@
           z-index: 2 !important;
         }
 
-        /* Remove the default main/footer spacing so Curse sits directly
-           beneath the final song in the list. */
+        /* Keep the footer directly under the final song while adding the
+           same gold divider used elsewhere on the site. */
         main {
           padding-bottom: 0 !important;
         }
@@ -102,7 +102,7 @@
           width: 100% !important;
           margin: 0 !important;
           padding: 0 !important;
-          border-top: 0 !important;
+          border-top: 1px solid var(--gold, #d4af37) !important;
           line-height: 0 !important;
         }
 
@@ -122,6 +122,7 @@
         @media (max-width: 500px) {
           .top-area {
             min-height: 82px !important;
+            margin-bottom: 10px !important;
           }
 
           .top-area h1 {
