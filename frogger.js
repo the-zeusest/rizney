@@ -33,7 +33,11 @@
       style.id = 'header-image-overrides';
       style.textContent = `
         .top-area {
+          position: relative !important;
           padding: 0 !important;
+          margin: 0 !important;
+          line-height: 0 !important;
+          font-size: 0 !important;
         }
 
         .top-area .tagline {
@@ -41,14 +45,14 @@
         }
 
         .top-area h1 {
-          display: flex !important;
-          justify-content: center !important;
-          align-items: flex-start !important;
+          display: block !important;
+          width: 100% !important;
           min-height: 0 !important;
           height: auto !important;
           margin: 0 !important;
           padding: 0 !important;
           line-height: 0 !important;
+          font-size: 0 !important;
         }
 
         .top-area .curse-logo {
@@ -58,7 +62,10 @@
           height: auto !important;
           max-height: none !important;
           margin: 0 auto !important;
+          padding: 0 !important;
+          border: 0 !important;
           object-fit: contain !important;
+          vertical-align: top !important;
         }
 
         .top-area .rizney-logo {
