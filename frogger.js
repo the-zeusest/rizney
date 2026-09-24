@@ -12,12 +12,14 @@
     let context = header.querySelector('.context-link');
     if (!context) {
       context = document.createElement('a');
-      context.href = './context.html';
-      context.textContent = 'CONTEXT';
       context.className = 'context-link';
-      context.setAttribute('aria-label', 'Read context');
       donate?.insertAdjacentElement('afterend', context);
+      if (!context.isConnected) header.appendChild(context);
     }
+    context.href = './context.html';
+    context.textContent = 'CONTEXT';
+    context.setAttribute('aria-label', 'Read context');
+    context.setAttribute('title', 'Read context');
 
     let curseLogo = document.querySelector('.curse-logo');
     if (!curseLogo) {
@@ -53,96 +55,21 @@
       const style = document.createElement('style');
       style.id = 'header-image-overrides';
       style.textContent = `
-        .top-area {
-          position: relative !important;
-          min-height: clamp(88px, 14vw, 120px) !important;
-          margin: 0 0 14px !important;
-          padding: 0 !important;
-          line-height: 0 !important;
-          font-size: 0 !important;
-        }
-
-        .top-area h1 {
-          display: block !important;
-          width: 100% !important;
-          min-height: clamp(88px, 14vw, 120px) !important;
-          height: clamp(88px, 14vw, 120px) !important;
-          margin: 0 !important;
-          padding: 0 !important;
-          line-height: 0 !important;
-          font-size: 0 !important;
-        }
-
+        .top-area { position: relative !important; min-height: clamp(88px, 14vw, 120px) !important; margin: 0 0 14px !important; padding: 0 !important; line-height: 0 !important; font-size: 0 !important; }
+        .top-area h1 { display: block !important; width: 100% !important; min-height: clamp(88px, 14vw, 120px) !important; height: clamp(88px, 14vw, 120px) !important; margin: 0 !important; padding: 0 !important; line-height: 0 !important; font-size: 0 !important; }
         .top-area .tagline { display: none !important; }
-
-        .top-area .donate,
-        .top-area .context-link {
-          position: absolute !important;
-          top: 12px !important;
-          z-index: 2 !important;
-          border: 1px solid var(--gold) !important;
-          border-radius: 999px !important;
-          padding: 8px 13px !important;
-          color: var(--bright-gold) !important;
-          background: #160c1c !important;
-          font-size: .82rem !important;
-          line-height: 1.2 !important;
-          text-decoration: none !important;
-        }
-
+        .top-area .donate, .top-area .context-link { display: block !important; position: absolute !important; top: 12px !important; z-index: 10 !important; border: 1px solid var(--gold) !important; border-radius: 999px !important; padding: 8px 13px !important; color: var(--bright-gold) !important; background: #160c1c !important; font-size: .82rem !important; line-height: 1.2 !important; text-decoration: none !important; visibility: visible !important; opacity: 1 !important; }
         .top-area .donate { left: 12px !important; }
         .top-area .context-link { left: 105px !important; }
-        .top-area .donate:hover,
-        .top-area .context-link:hover,
-        .top-area .donate:focus-visible,
-        .top-area .context-link:focus-visible {
-          color: #fff !important;
-          background: #24132f !important;
-        }
-
-        .top-area .rizney-logo {
-          position: absolute !important;
-          top: 12px !important;
-          right: 16px !important;
-          display: block !important;
-          width: clamp(76px, 17vw, 165px) !important;
-          height: auto !important;
-          max-height: 120px !important;
-          object-fit: contain !important;
-          z-index: 2 !important;
-        }
-
+        .top-area .donate:hover, .top-area .context-link:hover, .top-area .donate:focus-visible, .top-area .context-link:focus-visible { color: #fff !important; background: #24132f !important; }
+        .top-area .rizney-logo { position: absolute !important; top: 12px !important; right: 16px !important; display: block !important; width: clamp(76px, 17vw, 165px) !important; height: auto !important; max-height: 120px !important; object-fit: contain !important; z-index: 2 !important; }
         main { padding-bottom: 0 !important; }
-
-        #site-footer {
-          display: flex !important;
-          justify-content: center !important;
-          align-items: flex-end !important;
-          width: 100% !important;
-          margin: 0 !important;
-          padding: 0 !important;
-          border-top: 1px solid var(--gold, #d4af37) !important;
-          line-height: 0 !important;
-        }
-
-        #site-footer .curse-logo {
-          display: block !important;
-          width: min(62vw, 500px) !important;
-          max-width: none !important;
-          height: auto !important;
-          max-height: none !important;
-          margin: 0 auto !important;
-          padding: 0 !important;
-          border: 0 !important;
-          object-fit: contain !important;
-          vertical-align: bottom !important;
-        }
-
+        #site-footer { display: flex !important; justify-content: center !important; align-items: flex-end !important; width: 100% !important; margin: 0 !important; padding: 0 !important; border-top: 1px solid var(--gold, #d4af37) !important; line-height: 0 !important; }
+        #site-footer .curse-logo { display: block !important; width: min(62vw, 500px) !important; max-width: none !important; height: auto !important; max-height: none !important; margin: 0 auto !important; padding: 0 !important; border: 0 !important; object-fit: contain !important; vertical-align: bottom !important; }
         @media (max-width: 500px) {
           .top-area { min-height: 82px !important; margin-bottom: 10px !important; }
           .top-area h1 { min-height: 82px !important; height: 82px !important; }
-          .top-area .donate,
-          .top-area .context-link { top: 8px !important; padding: 7px 11px !important; font-size: .78rem !important; }
+          .top-area .donate, .top-area .context-link { top: 8px !important; padding: 7px 11px !important; font-size: .78rem !important; }
           .top-area .donate { left: 8px !important; }
           .top-area .context-link { left: 91px !important; }
           .top-area .rizney-logo { top: 8px !important; right: 8px !important; width: 72px !important; }
@@ -153,9 +80,6 @@
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', applyHeaderImages, { once: true });
-  } else {
-    applyHeaderImages();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', applyHeaderImages, { once: true });
+  else applyHeaderImages();
 })();
