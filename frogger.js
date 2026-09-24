@@ -25,7 +25,10 @@
       document.body.appendChild(footer);
     }
     footer.appendChild(curseLogo);
-    heading.remove();
+
+    // Keep the original heading as the visible header container so the
+    // Donate button and Rizney logo have room to render.
+    heading.textContent = '';
 
     let rizneyLogo = header.querySelector('.rizney-logo');
     if (!rizneyLogo) {
@@ -43,9 +46,20 @@
       style.textContent = `
         .top-area {
           position: relative !important;
-          min-height: 0 !important;
+          min-height: clamp(120px, 20vw, 180px) !important;
           padding: 0 !important;
           margin: 0 !important;
+          line-height: 0 !important;
+          font-size: 0 !important;
+        }
+
+        .top-area h1 {
+          display: block !important;
+          width: 100% !important;
+          min-height: clamp(120px, 20vw, 180px) !important;
+          height: clamp(120px, 20vw, 180px) !important;
+          margin: 0 !important;
+          padding: 0 !important;
           line-height: 0 !important;
           font-size: 0 !important;
         }
@@ -100,6 +114,15 @@
         }
 
         @media (max-width: 500px) {
+          .top-area {
+            min-height: 110px !important;
+          }
+
+          .top-area h1 {
+            min-height: 110px !important;
+            height: 110px !important;
+          }
+
           .top-area .donate {
             top: 8px !important;
             left: 8px !important;
