@@ -1,8 +1,11 @@
 (() => {
   const header = document.querySelector('.top-area');
   const heading = header?.querySelector('h1');
+  const tagline = header?.querySelector('.tagline');
 
   if (!header || !heading) return;
+
+  tagline?.remove();
 
   const curseLogo = document.createElement('img');
   curseLogo.src = './assets/curse.png';
@@ -21,17 +24,22 @@
 
   const style = document.createElement('style');
   style.textContent = `
+    .top-area {
+      padding-top: 0;
+    }
+
     .top-area h1 {
       display: flex;
       justify-content: center;
       align-items: center;
-      min-height: 80px;
+      min-height: 150px;
+      margin-top: 0;
     }
 
     .curse-logo {
       display: block;
-      max-width: min(70vw, 420px);
-      max-height: 110px;
+      max-width: min(85vw, 600px);
+      max-height: 180px;
       width: auto;
       height: auto;
       object-fit: contain;
@@ -54,8 +62,8 @@
       }
 
       .curse-logo {
-        max-width: 62vw;
-        max-height: 78px;
+        max-width: 78vw;
+        max-height: 130px;
       }
 
       .rizney-logo {
