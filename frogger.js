@@ -1,77 +1,97 @@
 (() => {
-  const header = document.querySelector('.top-area');
-  const heading = header?.querySelector('h1');
-  const tagline = header?.querySelector('.tagline');
+  function applyHeaderImages() {
+    const header = document.querySelector('.top-area');
+    const heading = header?.querySelector('h1');
+    const tagline = header?.querySelector('.tagline');
 
-  if (!header || !heading) return;
+    if (!header || !heading) return;
 
-  tagline?.remove();
+    tagline?.remove();
 
-  const curseLogo = document.createElement('img');
-  curseLogo.src = './assets/curse.png';
-  curseLogo.alt = 'Curse';
-  curseLogo.className = 'curse-logo';
-  curseLogo.decoding = 'async';
-
-  heading.replaceChildren(curseLogo);
-
-  const rizneyLogo = document.createElement('img');
-  rizneyLogo.src = './assets/rizney.png';
-  rizneyLogo.alt = 'Rizney';
-  rizneyLogo.className = 'rizney-logo';
-  rizneyLogo.decoding = 'async';
-  header.appendChild(rizneyLogo);
-
-  const style = document.createElement('style');
-  style.textContent = `
-    .top-area {
-      padding-top: 0;
+    let curseLogo = heading.querySelector('.curse-logo');
+    if (!curseLogo) {
+      curseLogo = document.createElement('img');
+      curseLogo.src = './assets/curse.png';
+      curseLogo.alt = 'Curse';
+      curseLogo.className = 'curse-logo';
+      curseLogo.decoding = 'async';
+      heading.replaceChildren(curseLogo);
     }
 
-    .top-area h1 {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 150px;
-      margin-top: 0;
+    let rizneyLogo = header.querySelector('.rizney-logo');
+    if (!rizneyLogo) {
+      rizneyLogo = document.createElement('img');
+      rizneyLogo.src = './assets/rizney.png';
+      rizneyLogo.alt = 'Rizney';
+      rizneyLogo.className = 'rizney-logo';
+      rizneyLogo.decoding = 'async';
+      header.appendChild(rizneyLogo);
     }
 
-    .curse-logo {
-      display: block;
-      max-width: min(85vw, 600px);
-      max-height: 180px;
-      width: auto;
-      height: auto;
-      object-fit: contain;
+    if (!document.querySelector('#header-image-overrides')) {
+      const style = document.createElement('style');
+      style.id = 'header-image-overrides';
+      style.textContent = `
+        .top-area {
+          padding: 0 !important;
+        }
+
+        .top-area .tagline {
+          display: none !important;
+        }
+
+        .top-area h1 {
+          display: flex !important;
+          justify-content: center !important;
+          align-items: flex-start !important;
+          min-height: 0 !important;
+          height: auto !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          line-height: 0 !important;
+        }
+
+        .top-area .curse-logo {
+          display: block !important;
+          width: min(92vw, 760px) !important;
+          max-width: none !important;
+          height: auto !important;
+          max-height: none !important;
+          margin: 0 auto !important;
+          object-fit: contain !important;
+        }
+
+        .top-area .rizney-logo {
+          position: absolute !important;
+          top: 10px !important;
+          right: 14px !important;
+          display: block !important;
+          width: clamp(56px, 12vw, 120px) !important;
+          height: auto !important;
+          max-height: 100px !important;
+          object-fit: contain !important;
+          z-index: 2 !important;
+        }
+
+        @media (max-width: 500px) {
+          .top-area .curse-logo {
+            width: 84vw !important;
+          }
+
+          .top-area .rizney-logo {
+            top: 8px !important;
+            right: 8px !important;
+            width: 52px !important;
+          }
+        }
+      `;
+      document.head.appendChild(style);
     }
+  }
 
-    .rizney-logo {
-      position: absolute;
-      top: 10px;
-      right: 14px;
-      display: block;
-      width: clamp(56px, 12vw, 120px);
-      height: auto;
-      max-height: 100px;
-      object-fit: contain;
-    }
-
-    @media (max-width: 500px) {
-      .top-area h1 {
-        padding: 18px 56px 8px;
-      }
-
-      .curse-logo {
-        max-width: 78vw;
-        max-height: 130px;
-      }
-
-      .rizney-logo {
-        top: 8px;
-        right: 8px;
-        width: 52px;
-      }
-    }
-  `;
-  document.head.appendChild(style);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', applyHeaderImages, { once: true });
+  } else {
+    applyHeaderImages();
+  }
 })();
