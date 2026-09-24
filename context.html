@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Context | Walt Rizney</title>
+  <style>
+    :root {
+      --black: #000;
+      --panel: #120b18;
+      --purple: #c084fc;
+      --bright-purple: #e0aaff;
+      --gold: #d4af37;
+      --bright-gold: #f5d76e;
+      --muted: #b9a8c5;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--purple);
+      background: var(--black);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .page {
+      width: min(760px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 18px 0 48px;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--gold);
+    }
+
+    .back,
+    .context-label {
+      border: 1px solid var(--gold);
+      border-radius: 999px;
+      padding: 8px 13px;
+      color: var(--bright-gold);
+      background: #160c1c;
+      font-size: .78rem;
+      text-decoration: none;
+      letter-spacing: .04em;
+    }
+
+    .back:hover,
+    .back:focus-visible { color: #fff; background: #24132f; }
+    h1 {
+      margin: 0;
+      color: var(--bright-gold);
+      font-size: clamp(1.35rem, 5vw, 2rem);
+      letter-spacing: .08em;
+      text-align: center;
+    }
+    .context-label { visibility: hidden; }
+
+    main {
+      margin-top: 34px;
+      padding: clamp(22px, 5vw, 42px);
+      background: var(--panel);
+      border: 1px solid #3a2148;
+      box-shadow: 0 7px 28px rgba(0,0,0,.45);
+    }
+    h2 { margin-top: 0; color: var(--bright-purple); font-size: 1.35rem; }
+    p { color: var(--muted); font-size: 1.05rem; line-height: 1.75; }
+    .signature { color: var(--bright-gold); text-align: right; }
+
+    @media (max-width: 500px) {
+      .page { width: min(100% - 20px, 760px); padding-top: 10px; }
+      header { gap: 8px; }
+      .back, .context-label { padding: 7px 9px; font-size: .7rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <a class="back" href="./">← HOME</a>
+      <h1>CONTEXT</h1>
+      <span class="context-label" aria-hidden="true">CONTEXT</span>
+    </header>
+    <main>
+      <h2>Welcome to the world of Walt Rizney</h2>
+      <p>This is a living collection of music, moments, and Mix'N'Mojo. Every track is part of the archive and carries its own place in the journey.</p>
+      <p>Browse the songs in order, let the cards choose a reading, or simply press play and see where the music takes you. The collection is meant to be explored, revisited, and enjoyed at your own pace.</p>
+      <p class="signature">✦ Keep listening ✦</p>
+    </main>
+  </div>
+</body>
+</html>
