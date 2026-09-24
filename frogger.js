@@ -8,6 +8,17 @@
 
     tagline?.remove();
 
+    let donate = header.querySelector('.donate');
+    let context = header.querySelector('.context-link');
+    if (!context) {
+      context = document.createElement('a');
+      context.href = './context.html';
+      context.textContent = 'CONTEXT';
+      context.className = 'context-link';
+      context.setAttribute('aria-label', 'Read context');
+      donate?.insertAdjacentElement('afterend', context);
+    }
+
     let curseLogo = document.querySelector('.curse-logo');
     if (!curseLogo) {
       curseLogo = document.createElement('img');
@@ -26,8 +37,6 @@
     }
     footer.appendChild(curseLogo);
 
-    // Keep the original heading as the visible header container so the
-    // Donate button and Rizney logo have room to render.
     heading.textContent = '';
 
     let rizneyLogo = header.querySelector('.rizney-logo');
@@ -64,17 +73,31 @@
           font-size: 0 !important;
         }
 
-        .top-area .tagline {
-          display: none !important;
-        }
+        .top-area .tagline { display: none !important; }
 
-        .top-area .donate {
+        .top-area .donate,
+        .top-area .context-link {
+          position: absolute !important;
           top: 12px !important;
-          left: 12px !important;
+          z-index: 2 !important;
+          border: 1px solid var(--gold) !important;
+          border-radius: 999px !important;
           padding: 8px 13px !important;
+          color: var(--bright-gold) !important;
+          background: #160c1c !important;
           font-size: .82rem !important;
           line-height: 1.2 !important;
-          z-index: 2 !important;
+          text-decoration: none !important;
+        }
+
+        .top-area .donate { left: 12px !important; }
+        .top-area .context-link { left: 105px !important; }
+        .top-area .donate:hover,
+        .top-area .context-link:hover,
+        .top-area .donate:focus-visible,
+        .top-area .context-link:focus-visible {
+          color: #fff !important;
+          background: #24132f !important;
         }
 
         .top-area .rizney-logo {
@@ -89,11 +112,7 @@
           z-index: 2 !important;
         }
 
-        /* Keep the footer directly under the final song while adding the
-           same gold divider used elsewhere on the site. */
-        main {
-          padding-bottom: 0 !important;
-        }
+        main { padding-bottom: 0 !important; }
 
         #site-footer {
           display: flex !important;
@@ -120,32 +139,14 @@
         }
 
         @media (max-width: 500px) {
-          .top-area {
-            min-height: 82px !important;
-            margin-bottom: 10px !important;
-          }
-
-          .top-area h1 {
-            min-height: 82px !important;
-            height: 82px !important;
-          }
-
-          .top-area .donate {
-            top: 8px !important;
-            left: 8px !important;
-            padding: 7px 11px !important;
-            font-size: .78rem !important;
-          }
-
-          .top-area .rizney-logo {
-            top: 8px !important;
-            right: 8px !important;
-            width: 72px !important;
-          }
-
-          #site-footer .curse-logo {
-            width: 60vw !important;
-          }
+          .top-area { min-height: 82px !important; margin-bottom: 10px !important; }
+          .top-area h1 { min-height: 82px !important; height: 82px !important; }
+          .top-area .donate,
+          .top-area .context-link { top: 8px !important; padding: 7px 11px !important; font-size: .78rem !important; }
+          .top-area .donate { left: 8px !important; }
+          .top-area .context-link { left: 91px !important; }
+          .top-area .rizney-logo { top: 8px !important; right: 8px !important; width: 72px !important; }
+          #site-footer .curse-logo { width: 60vw !important; }
         }
       `;
       document.head.appendChild(style);
