@@ -57,7 +57,7 @@
 
         .top-area .curse-logo {
           display: block !important;
-          width: min(92vw, 760px) !important;
+          width: min(78vw, 620px) !important;
           max-width: none !important;
           height: auto !important;
           max-height: none !important;
@@ -82,7 +82,7 @@
 
         @media (max-width: 500px) {
           .top-area .curse-logo {
-            width: 84vw !important;
+            width: 72vw !important;
           }
 
           .top-area .rizney-logo {
