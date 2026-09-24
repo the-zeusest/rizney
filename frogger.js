@@ -46,7 +46,7 @@
       style.textContent = `
         .top-area {
           position: relative !important;
-          min-height: clamp(120px, 20vw, 180px) !important;
+          min-height: clamp(88px, 14vw, 120px) !important;
           padding: 0 !important;
           margin: 0 !important;
           line-height: 0 !important;
@@ -56,8 +56,8 @@
         .top-area h1 {
           display: block !important;
           width: 100% !important;
-          min-height: clamp(120px, 20vw, 180px) !important;
-          height: clamp(120px, 20vw, 180px) !important;
+          min-height: clamp(88px, 14vw, 120px) !important;
+          height: clamp(88px, 14vw, 120px) !important;
           margin: 0 !important;
           padding: 0 !important;
           line-height: 0 !important;
@@ -82,11 +82,17 @@
           top: 12px !important;
           right: 16px !important;
           display: block !important;
-          width: clamp(68px, 15vw, 150px) !important;
+          width: clamp(76px, 17vw, 165px) !important;
           height: auto !important;
           max-height: 120px !important;
           object-fit: contain !important;
           z-index: 2 !important;
+        }
+
+        /* Remove the default main/footer spacing so Curse sits directly
+           beneath the final song in the list. */
+        main {
+          padding-bottom: 0 !important;
         }
 
         #site-footer {
@@ -94,9 +100,9 @@
           justify-content: center !important;
           align-items: flex-end !important;
           width: 100% !important;
-          margin-top: 28px !important;
-          padding: 18px 0 0 !important;
-          border-top: 1px solid #3b1d50 !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          border-top: 0 !important;
           line-height: 0 !important;
         }
 
@@ -115,12 +121,12 @@
 
         @media (max-width: 500px) {
           .top-area {
-            min-height: 110px !important;
+            min-height: 82px !important;
           }
 
           .top-area h1 {
-            min-height: 110px !important;
-            height: 110px !important;
+            min-height: 82px !important;
+            height: 82px !important;
           }
 
           .top-area .donate {
@@ -133,7 +139,7 @@
           .top-area .rizney-logo {
             top: 8px !important;
             right: 8px !important;
-            width: 64px !important;
+            width: 72px !important;
           }
 
           #site-footer .curse-logo {
