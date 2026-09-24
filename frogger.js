@@ -8,15 +8,24 @@
 
     tagline?.remove();
 
-    let curseLogo = heading.querySelector('.curse-logo');
+    let curseLogo = document.querySelector('.curse-logo');
     if (!curseLogo) {
       curseLogo = document.createElement('img');
       curseLogo.src = './assets/curse.png';
       curseLogo.alt = 'Curse';
       curseLogo.className = 'curse-logo';
       curseLogo.decoding = 'async';
-      heading.replaceChildren(curseLogo);
     }
+
+    let footer = document.querySelector('#site-footer');
+    if (!footer) {
+      footer = document.createElement('footer');
+      footer.id = 'site-footer';
+      footer.setAttribute('aria-label', 'Site footer');
+      document.body.appendChild(footer);
+    }
+    footer.appendChild(curseLogo);
+    heading.remove();
 
     let rizneyLogo = header.querySelector('.rizney-logo');
     if (!rizneyLogo) {
@@ -34,6 +43,7 @@
       style.textContent = `
         .top-area {
           position: relative !important;
+          min-height: 0 !important;
           padding: 0 !important;
           margin: 0 !important;
           line-height: 0 !important;
@@ -44,18 +54,39 @@
           display: none !important;
         }
 
-        .top-area h1 {
-          display: block !important;
-          width: 100% !important;
-          min-height: 0 !important;
-          height: auto !important;
-          margin: 0 !important;
-          padding: 0 !important;
-          line-height: 0 !important;
-          font-size: 0 !important;
+        .top-area .donate {
+          top: 12px !important;
+          left: 12px !important;
+          padding: 8px 13px !important;
+          font-size: .82rem !important;
+          line-height: 1.2 !important;
+          z-index: 2 !important;
         }
 
-        .top-area .curse-logo {
+        .top-area .rizney-logo {
+          position: absolute !important;
+          top: 12px !important;
+          right: 16px !important;
+          display: block !important;
+          width: clamp(68px, 15vw, 150px) !important;
+          height: auto !important;
+          max-height: 120px !important;
+          object-fit: contain !important;
+          z-index: 2 !important;
+        }
+
+        #site-footer {
+          display: flex !important;
+          justify-content: center !important;
+          align-items: flex-end !important;
+          width: 100% !important;
+          margin-top: 28px !important;
+          padding: 18px 0 0 !important;
+          border-top: 1px solid #3b1d50 !important;
+          line-height: 0 !important;
+        }
+
+        #site-footer .curse-logo {
           display: block !important;
           width: min(62vw, 500px) !important;
           max-width: none !important;
@@ -65,30 +96,25 @@
           padding: 0 !important;
           border: 0 !important;
           object-fit: contain !important;
-          vertical-align: top !important;
-        }
-
-        .top-area .rizney-logo {
-          position: absolute !important;
-          top: 10px !important;
-          right: 14px !important;
-          display: block !important;
-          width: clamp(56px, 12vw, 120px) !important;
-          height: auto !important;
-          max-height: 100px !important;
-          object-fit: contain !important;
-          z-index: 2 !important;
+          vertical-align: bottom !important;
         }
 
         @media (max-width: 500px) {
-          .top-area .curse-logo {
-            width: 60vw !important;
+          .top-area .donate {
+            top: 8px !important;
+            left: 8px !important;
+            padding: 7px 11px !important;
+            font-size: .78rem !important;
           }
 
           .top-area .rizney-logo {
             top: 8px !important;
             right: 8px !important;
-            width: 52px !important;
+            width: 64px !important;
+          }
+
+          #site-footer .curse-logo {
+            width: 60vw !important;
           }
         }
       `;
